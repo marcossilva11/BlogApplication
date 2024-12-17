@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- IMPORT BOOTSTRAP ICONS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <title>Blog XXX</title>
+  </head>
+  <body>
+    <!-- HEADER -->
+    <%- include("partials/header.ejs") %>
+    <!-- FIM HEADER -->
+    <!-- MAIN -->
+    <% if (blogPosts.length === 0) { %>
+    <main>
+      <p>Nenhuma postagem feita. Clique em adicionar post para criar um!</p>
+    </main>
+    <% } else { %>
+    <main>
+      <div class="cardContainer">
+        <% blogPosts.forEach(post => { %>
+        <article class="cardArticle">
+          <% if (post.postImage) { %>
+          <img
+            src="<%= post.postImage %>"
+            alt="Post Image"
+            style="max-width: 200px"
+          />
+          <% } %>
+
+          <div class="cardData">
+            <h2 class="card-title"><%= post.postTitle %></h2>
+            <a href="/view/<%= post.id %>">Ver mais...</a>
+          </div>
+        </article>
+        <% }); %>
+      </div>
+    </main>
+    <% } %>
+    <!-- FIM MAIN -->
+    <!-- FOOTER -->
+    <%- include("partials/footer.ejs") %>
+    <!-- FOTER -->
+  </body>
+</html>
