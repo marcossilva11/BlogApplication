@@ -10,6 +10,8 @@ const upload = multer({ storage: storage });
 
 const blogPosts = [];
 
+app.use(express.static("public"));
+
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get("/", (req, res) => {
@@ -42,6 +44,7 @@ app.post("/submit", upload.single("postImage"), (req, res) => {
 
   res.redirect("/");
 });
+
 app.get("/edit/:id", (req, res) => {
   const postId = parseInt(req.params.id);
   const post = blogPosts.find((p) => p.id === parseInt(postId));

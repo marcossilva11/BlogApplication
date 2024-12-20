@@ -8,6 +8,8 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
     />
+    <!-- IMPORT CSS -->
+    <link rel="stylesheet" href="/styles/style.css" />
     <title>Blog XXX</title>
   </head>
   <body>
@@ -18,7 +20,11 @@
     <main>
       <h1>Editar post</h1>
       <div class="form-container">
-        <form action="/confirmEdit/<%= post.id %>" method="post" enctype="multipart/form-data">
+        <form
+          action="/confirmEdit/<%= post.id %>"
+          method="post"
+          enctype="multipart/form-data"
+        >
           <div class="input-form">
             <label for="postTitle">Título do post</label>
             <input
@@ -32,28 +38,28 @@
             <label for="postImage">Imagem do post</label>
             <% if (post.postImage) { %>
             <div>
-              <img
-                src="<%= post.postImage %>"
-                alt="Post Image"
-                style="max-width: 200px; max-height: 150px"
-              />
-              <br />
-              <span
-                >Selecione uma nova imagem ou deixe em branco para manter a
-                imagem atual.</span
-              >
+              <img src="<%= post.postImage %>" alt="Post Image" />
             </div>
             <% } %>
-            <input
-              type="file"
-              name="postImage"
-              accept="image/*"
-              id="postImage"
-            />
+            <div class="input-file">
+              <input
+                type="file"
+                name="postImage"
+                accept="image/*"
+                id="postImage"
+              />
+              <i class="bi bi-file-image"></i>
+              <p style="text-align: center" id="messageFile">
+                Selecione uma nova imagem ou deixe em branco para manter a
+                imagem atual.
+              </p>
+            </div>
           </div>
           <div class="input-form">
             <label for="postDesc">Descrição do post</label>
-            <textarea name="postDesc" id="postDesc"><%= post.postDesc %></textarea>
+            <textarea name="postDesc" id="postDesc">
+<%= post.postDesc %></textarea
+            >
           </div>
           <div class="button-form">
             <input type="submit" value="Confirmar" />
@@ -65,5 +71,8 @@
     <!-- FOOTER -->
     <%- include("partials/footer.ejs") %>
     <!-- FOTER -->
+
+    <!-- IMPORT MESSAGE.JS -->
+    <script src="/js/message.js"></script>
   </body>
 </html>

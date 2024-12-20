@@ -8,6 +8,8 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
     />
+    <!-- IMPORT CSS -->
+    <link rel="stylesheet" href="styles/style.css" />
     <title>Blog XXX</title>
   </head>
   <body>
@@ -18,26 +20,35 @@
     <main>
       <h1>Adicionar post</h1>
       <div class="form-container">
-        <form action="/submit" method="post" enctype="multipart/form-data">
+        <form
+          action="/submit"
+          method="post"
+          enctype="multipart/form-data"
+          autocomplete="off"
+        >
           <div class="input-form">
             <label for="postTitle">Título do post</label>
             <input type="text" name="postTitle" id="postTitle" />
           </div>
           <div class="input-form">
             <label for="postImage">Imagem do post</label>
-            <input
-              type="file"
-              name="postImage"
-              accept="image/*"
-              id="postImage"
-            />
+            <div class="input-file">
+              <input
+                type="file"
+                name="postImage"
+                accept="image/*"
+                id="postImage"
+              />
+              <i class="bi bi-file-image"></i>
+              <p id="messageFile">Selecione um arquivo...</p>
+            </div>
           </div>
           <div class="input-form">
             <label for="postDesc">Descrição do post</label>
             <textarea name="postDesc" id="postDesc"></textarea>
           </div>
           <div class="button-form">
-            <input type="submit" value="Adicionar">
+            <input type="submit" value="Adicionar" />
           </div>
         </form>
       </div>
@@ -45,6 +56,9 @@
     <!-- FIM MAIN -->
     <!-- FOOTER -->
     <%- include("partials/footer.ejs") %>
-    <!-- FOTER -->
+    <!-- FOOTER -->
+
+    <!-- IMPORT MESSAGE.JS -->
+    <script src="/js/message.js"></script>
   </body>
 </html>
